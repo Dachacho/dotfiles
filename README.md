@@ -2,7 +2,7 @@
 
 My personal macOS dotfiles.
 
-the install script assumes that you want to do a clean and replace (it doesn't backup anything)
+this script backs up `.zshrc` and `.config`
 
 ## What's in here
 - zsh config (starship + autosuggestions + syntax highlighting + zoxide)

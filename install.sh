@@ -4,6 +4,9 @@ DOTFILES="$HOME/dotfiles"
 # Create config dir if it doesn't exist
 mkdir -p ~/.config
 
+cp ~/.zshrc ~/.zshrc.bak 2>/dev/null
+cp -r ~/.config ~/.config.bak 2>/dev/null
+
 # Remove existing files/dirs first
 rm -f ~/.zshrc
 rm -f ~/.aerospace.toml
