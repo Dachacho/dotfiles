@@ -24,12 +24,15 @@ cd ~/dotfiles
 
 ## Dependencies
 ```bash
-brew install aerospace starship fastfetch 
+brew install aerospace starship fastfetch zoxide zsh-autosuggestions zsh-syntax-highlighting
 
 brew tap FelixKratz/formulae
 brew install sketchybar
 
-brew install --cask ghostty
+brew install --cask ghostty font-jetbrains-mono-nerd-font
+
+# Start sketchybar
+brew services start sketchybar
 ```
 
 ## Adding a new config to dotfiles

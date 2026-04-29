@@ -23,4 +23,7 @@ ln -sf $DOTFILES/ghostty ~/.config/ghostty
 ln -sf $DOTFILES/sketchybar ~/.config/sketchybar
 ln -sf $DOTFILES/fastfetch ~/.config/fastfetch
 
+# Make sketchybar plugins executable
+chmod +x $DOTFILES/sketchybar/plugins/*.sh
+
 echo "Done!"
