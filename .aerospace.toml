@@ -11,7 +11,7 @@ inner.horizontal = 8
 inner.vertical = 8
 outer.left = 8
 outer.right = 8
-outer.top = 35 #for sketchybar 
+outer.top = 40 #for sketchybar 
 outer.bottom = 8
 
 [mode.main.binding]
