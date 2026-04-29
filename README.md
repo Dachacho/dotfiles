@@ -2,6 +2,8 @@
 
 My personal macOS dotfiles.
 
+the install script assumes that you want to do a clean and replace (it doesn't backup anything)
+
 ## What's in here
 - zsh config (starship + autosuggestions + syntax highlighting + zoxide)
 - Ghostty terminal config (Gruvbox Dark, JetBrainsMono Nerd Font)
