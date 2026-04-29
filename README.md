@@ -10,6 +10,7 @@ this script backs up `.zshrc` and `.config`
 - Aerospace tiling window manager
 - Sketchybar status bar
 - Starship prompt
+- fastfetch with custom config
 
 ## Neovim
 Lives in a separate repo _(clone it separately)_
@@ -23,7 +24,7 @@ cd ~/dotfiles
 
 ## Dependencies
 ```bash
-brew install aerospace starship 
+brew install aerospace starship fastfetch 
 
 brew tap FelixKratz/formulae
 brew install sketchybar
