@@ -31,3 +31,30 @@ brew install sketchybar
 
 brew install --cask ghostty
 ```
+
+## Adding a new config to dotfiles
+
+1. Copy the config to dotfiles:
+```bash
+cp -r ~/.config/newapp ~/dotfiles/newapp
+```
+
+2. Symlink it:
+```bash
+rm -rf ~/.config/newapp
+ln -sf ~/dotfiles/newapp ~/.config/newapp
+```
+
+3. Add to `install.sh`:
+```bash
+rm -rf ~/.config/newapp
+ln -sf $DOTFILES/newapp ~/.config/newapp
+```
+
+4. Push:
+```bash
+cd ~/dotfiles
+git add .
+git commit -m "add newapp config"
+git push
+```
