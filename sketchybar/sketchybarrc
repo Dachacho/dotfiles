@@ -45,10 +45,7 @@ for sid in 1 2 3 4 5; do
                icon.color=$MUTED_TEXT \
                icon.padding_left=8 \
                icon.padding_right=8 \
-               label="$sid" \
                label.drawing=off \
-               label.padding_left=8 \
-               label.padding_right=8 \
                padding_left=2 \
                padding_right=2 \
                click_script="aerospace workspace $sid"
