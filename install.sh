@@ -4,6 +4,14 @@ DOTFILES="$HOME/dotfiles"
 # Create config dir if it doesn't exist
 mkdir -p ~/.config
 
+# Remove existing files/dirs first
+rm -f ~/.zshrc
+rm -f ~/.aerospace.toml
+rm -f ~/.config/starship.toml
+rm -rf ~/.config/ghostty
+rm -rf ~/.config/sketchybar
+
+#install
 ln -sf $DOTFILES/.zshrc ~/.zshrc
 ln -sf $DOTFILES/.aerospace.toml ~/.aerospace.toml
 ln -sf $DOTFILES/starship.toml ~/.config/starship.toml
