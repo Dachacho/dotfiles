@@ -23,15 +23,13 @@ default=(
   padding_left=4
   padding_right=4
   icon.font="JetBrainsMono Nerd Font:Bold:13.0"
-  label.font="JetBrainsMono Nerd Font:Medium:13.0"
+  label.font="JetBrainsMono Nerd Font:Bold:13.0"
   icon.color=$TEXT_COLOR
   label.color=$TEXT_COLOR
   icon.padding_left=8
   icon.padding_right=4
   label.padding_left=4
   label.padding_right=8
-  icon.y_offset=1
-  label.y_offset=1
   background.color=$ITEM_BG_COLOR
   background.corner_radius=5
   background.height=24
@@ -40,6 +38,7 @@ sketchybar --default "${default[@]}"
 
 ##### Events #####
 sketchybar --add event aerospace_workspace_change
+sketchybar --add event spotify_change "com.spotify.client.PlaybackStateChanged"
 
 ##### Spaces #####
 for sid in 1 2 3 4 5; do
@@ -49,7 +48,6 @@ for sid in 1 2 3 4 5; do
                icon.color=$MUTED_TEXT \
                icon.padding_left=9 \
                icon.padding_right=9 \
-               icon.y_offset=1 \
                label.drawing=off \
                background.drawing=on \
                padding_left=2 \
@@ -64,12 +62,36 @@ sketchybar --add item aerospace_trigger left \
              script="$PLUGIN_DIR/aerospace.sh" \
            --subscribe aerospace_trigger aerospace_workspace_change
 
+##### Separator + Spotify (left) #####
+sketchybar --add item separator left \
+           --set separator \
+             icon="│" \
+             icon.color=0xff504945 \
+             icon.padding_left=8 \
+             icon.padding_right=4 \
+             label.drawing=off \
+             background.drawing=off
+
+sketchybar --add item spotify left \
+           --set spotify \
+             icon= \
+             icon.color=$ACCENT_COLOR \
+             icon.padding_left=6 \
+             icon.padding_right=6 \
+             label.color=$TEXT_COLOR \
+             label.max_chars=35 \
+             label.padding_left=0 \
+             label.padding_right=6 \
+             background.drawing=off \
+             drawing=off \
+             script="$PLUGIN_DIR/spotify.sh" \
+           --subscribe spotify spotify_change
+
 ##### Front App (centered) #####
 sketchybar --add item front_app center \
            --set front_app \
              icon.drawing=off \
              label.color=$TEXT_COLOR \
-             label.y_offset=1 \
              label.padding_left=10 \
              label.padding_right=10 \
              background.drawing=on \
@@ -85,6 +107,16 @@ sketchybar --add item clock right \
              background.drawing=on \
              script="$PLUGIN_DIR/clock.sh"
 
+sketchybar --add item stats right \
+           --set stats \
+             update_freq=3 \
+             icon.drawing=off \
+             label.color=$TEXT_COLOR \
+             label.padding_left=10 \
+             label.padding_right=10 \
+             background.drawing=on \
+             script="$PLUGIN_DIR/cpu.sh"
+
 sketchybar --add item battery right \
            --set battery \
              update_freq=120 \
@@ -92,6 +124,13 @@ sketchybar --add item battery right \
              background.drawing=on \
              script="$PLUGIN_DIR/battery.sh" \
            --subscribe battery system_woke power_source_change
+
+sketchybar --add item wifi right \
+           --set wifi \
+             update_freq=30 \
+             icon.color=$ACCENT_COLOR \
+             background.drawing=on \
+             script="$PLUGIN_DIR/wifi.sh"
 
 ##### Initial Run #####
 sketchybar --update
