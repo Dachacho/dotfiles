@@ -107,6 +107,7 @@ sketchybar --add item front_app center \
 ##### Right Items #####
 sketchybar --add item clock right \
            --set clock \
+             update_freq=10 \
              icon=󰃰 \
              icon.color=$BLUE \
              background.drawing=on \

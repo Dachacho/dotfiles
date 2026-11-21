@@ -1,18 +1,8 @@
 #!/bin/sh
 
-# Update exactly on the minute boundary so the clock never shows a stale minute.
-PIDFILE="${TMPDIR:-/tmp}/sketchybar-clock-${USER}.pid"
+# The $NAME variable is passed from sketchybar and holds the name of
+# the item invoking this script:
+# https://felixkratz.github.io/SketchyBar/config/events#events-and-scripting
 
-old_pid=$(cat "$PIDFILE" 2>/dev/null)
-if [ -n "$old_pid" ] && ps -p "$old_pid" -o command= 2>/dev/null | grep -q 'clock.sh'; then
-  kill "$old_pid" 2>/dev/null
-fi
+sketchybar --set "$NAME" label="$(date '+%d/%m %H:%M')"
 
-echo $$ > "$PIDFILE"
-trap 'rm -f "$PIDFILE"' EXIT
-
-while true; do
-  sketchybar --set "$NAME" label="$(date '+%d/%m %H:%M')"
-  now=$(date +%s)
-  sleep $((60 - now % 60))
-done
