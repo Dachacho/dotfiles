@@ -19,7 +19,7 @@ CYAN=0xff33b1ff
 ##### Bar #####
 sketchybar --bar position=top \
                  height=36 \
-                 blur_radius=20 \
+                 blur_radius=0 \
                  color=$BAR_COLOR \
                  padding_left=8 \
                  padding_right=8
@@ -107,7 +107,6 @@ sketchybar --add item front_app center \
 ##### Right Items #####
 sketchybar --add item clock right \
            --set clock \
-             update_freq=10 \
              icon=󰃰 \
              icon.color=$BLUE \
              background.drawing=on \
@@ -115,7 +114,7 @@ sketchybar --add item clock right \
 
 sketchybar --add item stats right \
            --set stats \
-             update_freq=3 \
+             update_freq=5 \
              icon.drawing=off \
              label.color=$TEXT_COLOR \
              label.padding_left=10 \
@@ -133,7 +132,7 @@ sketchybar --add item battery right \
 
 sketchybar --add item wifi right \
            --set wifi \
-             update_freq=30 \
+             update_freq=60 \
              icon.color=$BLUE \
              background.drawing=on \
              script="$PLUGIN_DIR/wifi.sh"

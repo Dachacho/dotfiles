@@ -3,10 +3,17 @@ export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 export PATH="$PATH:$HOME/.pub-cache/bin"
 export PATH="$PATH:$HOME/.spicetify"
 
-# ─── NVM ────────────────────────────────────────────────
+# ─── Node (lazy nvm) ────────────────────────────────────
+# Node is on PATH immediately; nvm loads only when you call it.
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+export PATH="$HOME/.nvm/versions/node/v24.4.1/bin:$PATH"
+
+nvm() {
+  unset -f nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+  nvm "$@"
+}
 
 # ─── Zsh Autosuggestions ────────────────────────────────
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -25,3 +32,6 @@ eval "$(zoxide init zsh)"
 
 # ─── Starship ───────────────────────────────────────────
 eval "$(starship init zsh)"
+
+# opencode
+export PATH=/Users/mr.mgeli/.opencode/bin:$PATH
