@@ -7,8 +7,8 @@ this script backs up `.zshrc` and `.config`
 ## What's in here
 - zsh config (starship + autosuggestions + syntax highlighting + zoxide)
 - Ghostty terminal config (Gruvbox Dark, JetBrainsMono Nerd Font)
-- Aerospace tiling window manager
-- Sketchybar status bar
+- Aerospace tiling window manager (8px inner/outer gaps)
+- SketchyBar config (preserved but disabled; native macOS menu bar is used)
 - Starship prompt
 - fastfetch with custom config
 
@@ -26,13 +26,35 @@ cd ~/dotfiles
 ```bash
 brew install aerospace starship fastfetch zoxide zsh-autosuggestions zsh-syntax-highlighting
 
-brew tap FelixKratz/formulae
-brew install sketchybar
-
 brew install --cask ghostty font-jetbrains-mono-nerd-font
+```
 
-# Start sketchybar
+## Restoring SketchyBar
+The SketchyBar config is kept in `sketchybar/` and is still symlinked by
+`install.sh`, but it is intentionally not running. To switch back:
+
+1. Install, trust and start the service:
+```bash
+brew tap FelixKratz/formulae
+brew trust felixkratz/formulae
+brew install sketchybar
 brew services start sketchybar
+```
+2. Restore the AeroSpace integration in `.aerospace.toml`:
+```toml
+exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE']
+
+[gaps]
+outer.top = 40
+```
+3. Disable auto-hiding of the native menu bar if needed:
+```bash
+defaults write -g _HIHideMenuBar -bool true
+killall SystemUIServer
+```
+4. Reload AeroSpace:
+```bash
+aerospace reload-config
 ```
 
 ## Adding a new config to dotfiles
